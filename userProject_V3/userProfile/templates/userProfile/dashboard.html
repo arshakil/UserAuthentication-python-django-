@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Dashboard Page{% endblock title %}
+
+{% block content %}
+<h1 class="text-center bg-info py-2">Dashboard</h1>
+<div class="row">
+    <div class="col-8 offset-2">
+
+        {% if user.profile.image %}
+        <div class="circle-img">
+                <img src="{{user.profile.image.url}}" class="rounded-circle" alt="Uploaded Image">
+        </div>
+        {% else %}
+        {% if user.profile.gender == 'male'  %}
+        <div class="circle-img center">
+                <img src="{% static 'img/male.jpg' %}" class="rounded-circle" alt="Uploaded Image">
+        </div>
+    
+        {% elif user.profile.gender == 'female' %}
+        <div class="circle-img center">
+                <img src="{% static 'img/female.jpg' %}" class="rounded-circle" alt="Uploaded Image">
+        </div>
+        {% else %}
+        <div class="circle-img center">
+                <img src="{% static 'img/common.png' %}" class="rounded-circle" alt="Uploaded Image">
+        </div>
+        {% endif %}
+
+
+        
+        {% endif %}
+        <hr class="my-3">
+        <div class="jumbotron">
+            <strong>Username:</strong><a href=""> {{user.username}}</a><br>
+            <strong>First Name:</strong><a href=""> {{user.first_name}}</a><br>
+            <strong>Last Name:</strong><a href=""> {{user.last_name}}</a><br>
+            <strong>Gender:</strong><a href=""> {{user.profile.gender|capfirst}}</a><br>
+            <strong>Role:</strong><a href=""> {{user.profile.get_role_display}}</a><br>
+            <strong>NID Number:</strong><a href=""> {{user.profile.nid_number}}</a><br>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

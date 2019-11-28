@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Edit user Page{% endblock title %}
+
+{% block content %}
+<h1 class="text-center bg-info py-2">Edit User Page</h1>
+
+<div class="row">
+        <div class="col-8 offset-2">
+
+                {% if user.profile.image %}
+
+                <div class="circle-img center">
+                        <img src="{{ user.profile.image.url }}" class="rounded-circle" alt="Uploaded Image">
+                </div>
+                {% else %}
+                {% if user.profile.gender == 'male'  %}
+                <div class="circle-img center">
+                        <img src="{% static 'img/male.jpg' %}" class="rounded-circle" alt="Uploaded Image">
+                </div>
+
+                {% elif user.profile.gender == 'female' %}
+                <div class="circle-img center">
+                        <img src="{% static 'img/female.jpg' %}" class="rounded-circle" alt="Uploaded Image">
+                </div>
+                {% else %}
+                <div class="circle-img center">
+                        <img src="{% static 'img/common.png' %}" class="rounded-circle" alt="Uploaded Image">
+                </div>
+                {% endif %}
+
+
+                {% endif %}
+
+
+                <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+
+                                {{userform.username}}
+                        </div>
+                        <div class="form-group">
+                                <label for="id_first_name" class="text-success">First Name</label>
+                                {{userform.first_name}}
+                        </div>
+                        <div class="form-group">
+                                <label for="id_last_name">Last Name</label><strong><sup class="text-danger ml-1">*</sup></strong>
+                                {{userform.last_name}}
+                        </div>
+                        <div class="form-group">
+                                <label for="id_email">Email</label>
+                                {{userform.email}}
+                        </div>
+
+                        <div class="form-group">
+                                <label for="id_image">Image</label>
+                                {{userProfile.image}}
+                        </div>
+                        <div class="form-group">
+                                <label for="id_role">Role</label>
+                                {{userProfile.role}}
+                        </div>
+                        <div class="form-group">
+                                <label for="id_nid_number">NID</label>
+                                {{userProfile.nid_number}}
+                        </div>
+                        <div class="form-group">
+                                <label for="id_gender">Gender</label>
+                                {{userProfile.gender}}
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-success">Update</button>
+
+                        <hr>
+                        <hr>
+                </form>
+        </div>
+</div>
+
+{% endblock content %}

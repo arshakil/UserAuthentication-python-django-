@@ -1,0 +1,14 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+    Logout Page
+{% endblock title %}
+
+
+{% block content %}
+<p class="text-center py-2 mt-3 mb-3 text-danger">Successfully Logged out!</p> 
+
+<a class="btn btn-outline-info" href="{% url 'login'%}">Click here to login again.</a>
+{% endblock content %}
+    

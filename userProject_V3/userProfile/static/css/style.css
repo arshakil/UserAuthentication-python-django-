@@ -1,0 +1,23 @@
+.circle-img img{
+    margin-top:10px;
+    height: 128px; 
+    width: 143px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+    box-shadow: 1px 11px 13px rgb(155, 150, 150);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+
+  /* base tempalte top image */
+
+  .topnav-image img{
+    margin-top: -30px;
+    height: 40px;
+    width: 50px;
+    margin-bottom: -30px; 
+    border-radius: 2px;
+  }
